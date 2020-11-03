@@ -18,6 +18,12 @@ pipeline {
                 echo 'Testing..'
             }
         }
+        stage('sed') {
+            steps {
+                echo 'Change the username and password..'
+                sh " sed -i 's/mypass/NEWPASS/g' command"
+            }
+        }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
