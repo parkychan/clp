@@ -10,6 +10,10 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                sh "aws ecr get-login --no-include-email --region us-east-1"
+                sh "docker build -t "clp"
+                sh "docker tag clp:latest 912159400498.dkr.ecr.us-west-1.amazonaws.com/clp:latest"
+                sh "docker push 912159400498.dkr.ecr.us-west-1.amazonaws.com/clp:latest"
             }
         }
         stage('Test') {
