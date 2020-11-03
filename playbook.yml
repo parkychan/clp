@@ -1,0 +1,9 @@
+- hosts: localhost
+  become: yes
+  vars:
+    jenkins_hostname: 52.77.225.55
+    docker_users:
+    - jenkins
+  roles:
+    - role: geerlingguy.jenkins
+    - role: geerlingguy.docker
