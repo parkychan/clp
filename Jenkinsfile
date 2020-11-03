@@ -16,6 +16,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
+                sh " docker port test "
             }
         }
         stage('sed') {
@@ -27,6 +28,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                sh "kubectl apply -f deployment.yaml && kubectl get deployments "
             }
         }
     }
